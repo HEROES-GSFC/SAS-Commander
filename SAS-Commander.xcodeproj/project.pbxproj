@@ -19,17 +19,17 @@
 		86529B8E17CD2DD500AA11C1 /* SAS_CommanderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 86529B8D17CD2DD500AA11C1 /* SAS_CommanderTests.m */; };
 		86529B9917CD2DE600AA11C1 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86529B9817CD2DE600AA11C1 /* AppController.m */; };
 		86529B9C17CD370500AA11C1 /* Commander.m in Sources */ = {isa = PBXBuildFile; fileRef = 86529B9B17CD370500AA11C1 /* Commander.m */; };
-		86529BA417CD37E500AA11C1 /* Command.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86529B9E17CD37E500AA11C1 /* Command.cpp */; };
-		86529BA517CD37E500AA11C1 /* Packet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86529BA017CD37E500AA11C1 /* Packet.cpp */; };
-		86529BA617CD37E500AA11C1 /* UDPSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86529BA217CD37E500AA11C1 /* UDPSender.cpp */; };
-		86529BA917CD394500AA11C1 /* Telemetry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86529BA717CD394500AA11C1 /* Telemetry.cpp */; };
-		86529BAA17CD395E00AA11C1 /* Telemetry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86529BA717CD394500AA11C1 /* Telemetry.cpp */; };
-		86529BAC17CD395E00AA11C1 /* Command.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86529B9E17CD37E500AA11C1 /* Command.cpp */; };
-		86529BAE17CD395E00AA11C1 /* Packet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86529BA017CD37E500AA11C1 /* Packet.cpp */; };
-		86529BB017CD395E00AA11C1 /* UDPSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86529BA217CD37E500AA11C1 /* UDPSender.cpp */; };
 		86529BBC17CD39B100AA11C1 /* lib_crc.c in Sources */ = {isa = PBXBuildFile; fileRef = 86529BB817CD39B100AA11C1 /* lib_crc.c */; };
-		86529BBD17CD39B100AA11C1 /* lib_crc.txt in Resources */ = {isa = PBXBuildFile; fileRef = 86529BBA17CD39B100AA11C1 /* lib_crc.txt */; };
 		86529BC217CD3A9500AA11C1 /* CommandList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 86529BC117CD3A9500AA11C1 /* CommandList.plist */; };
+		867AF73217CD953900AAE11C /* icon.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 867AF73117CD953900AAE11C /* icon.iconset */; };
+		869136E317D00DD600D69406 /* UDPSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 869136E117D00DD600D69406 /* UDPSender.cpp */; };
+		869136E617D00DEE00D69406 /* types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 869136E417D00DEE00D69406 /* types.cpp */; };
+		869136EC17D00E1D00D69406 /* Packet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 869136EA17D00E1D00D69406 /* Packet.cpp */; };
+		869136EF17D00E4600D69406 /* Command.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 869136ED17D00E4600D69406 /* Command.cpp */; };
+		869136F017D00E5900D69406 /* Command.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 869136ED17D00E4600D69406 /* Command.cpp */; };
+		869136F117D00E6100D69406 /* Packet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 869136EA17D00E1D00D69406 /* Packet.cpp */; };
+		869136F217D00E6700D69406 /* types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 869136E417D00DEE00D69406 /* types.cpp */; };
+		869136F317D00E7400D69406 /* UDPSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 869136E117D00DD600D69406 /* UDPSender.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,18 +66,18 @@
 		86529B9817CD2DE600AA11C1 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
 		86529B9A17CD370500AA11C1 /* Commander.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Commander.h; sourceTree = "<group>"; };
 		86529B9B17CD370500AA11C1 /* Commander.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Commander.m; sourceTree = "<group>"; };
-		86529B9E17CD37E500AA11C1 /* Command.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Command.cpp; sourceTree = "<group>"; };
-		86529B9F17CD37E500AA11C1 /* Command.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Command.hpp; sourceTree = "<group>"; };
-		86529BA017CD37E500AA11C1 /* Packet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Packet.cpp; sourceTree = "<group>"; };
-		86529BA117CD37E500AA11C1 /* Packet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Packet.hpp; sourceTree = "<group>"; };
-		86529BA217CD37E500AA11C1 /* UDPSender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UDPSender.cpp; sourceTree = "<group>"; };
-		86529BA317CD37E500AA11C1 /* UDPSender.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UDPSender.hpp; sourceTree = "<group>"; };
-		86529BA717CD394500AA11C1 /* Telemetry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Telemetry.cpp; sourceTree = "<group>"; };
-		86529BA817CD394500AA11C1 /* Telemetry.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Telemetry.hpp; sourceTree = "<group>"; };
 		86529BB817CD39B100AA11C1 /* lib_crc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lib_crc.c; sourceTree = "<group>"; };
 		86529BB917CD39B100AA11C1 /* lib_crc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lib_crc.h; sourceTree = "<group>"; };
-		86529BBA17CD39B100AA11C1 /* lib_crc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lib_crc.txt; sourceTree = "<group>"; };
 		86529BC117CD3A9500AA11C1 /* CommandList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CommandList.plist; sourceTree = "<group>"; };
+		867AF73117CD953900AAE11C /* icon.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = icon.iconset; sourceTree = "<group>"; };
+		869136E117D00DD600D69406 /* UDPSender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UDPSender.cpp; path = SAS/aspect/UDPSender.cpp; sourceTree = SOURCE_ROOT; };
+		869136E417D00DEE00D69406 /* types.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = types.cpp; path = SAS/aspect/types.cpp; sourceTree = SOURCE_ROOT; };
+		869136E517D00DEE00D69406 /* types.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = types.hpp; path = SAS/aspect/types.hpp; sourceTree = SOURCE_ROOT; };
+		869136E817D00E0700D69406 /* UDPSender.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = UDPSender.hpp; path = SAS/aspect/UDPSender.hpp; sourceTree = SOURCE_ROOT; };
+		869136EA17D00E1D00D69406 /* Packet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Packet.cpp; path = SAS/aspect/Packet.cpp; sourceTree = SOURCE_ROOT; };
+		869136EB17D00E1D00D69406 /* Packet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Packet.hpp; path = SAS/aspect/Packet.hpp; sourceTree = SOURCE_ROOT; };
+		869136ED17D00E4600D69406 /* Command.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Command.cpp; path = SAS/aspect/Command.cpp; sourceTree = SOURCE_ROOT; };
+		869136EE17D00E4600D69406 /* Command.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Command.hpp; path = SAS/aspect/Command.hpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +104,7 @@
 		86529B5717CD2DD500AA11C1 = {
 			isa = PBXGroup;
 			children = (
+				867AF73117CD953900AAE11C /* icon.iconset */,
 				86529B6917CD2DD500AA11C1 /* SAS-Commander */,
 				86529B8617CD2DD500AA11C1 /* SAS-CommanderTests */,
 				86529B6217CD2DD500AA11C1 /* Frameworks */,
@@ -191,15 +192,15 @@
 		86529B9D17CD37AF00AA11C1 /* Externals */ = {
 			isa = PBXGroup;
 			children = (
+				869136ED17D00E4600D69406 /* Command.cpp */,
+				869136EE17D00E4600D69406 /* Command.hpp */,
+				869136E117D00DD600D69406 /* UDPSender.cpp */,
+				869136E417D00DEE00D69406 /* types.cpp */,
+				869136E517D00DEE00D69406 /* types.hpp */,
+				869136E817D00E0700D69406 /* UDPSender.hpp */,
+				869136EA17D00E1D00D69406 /* Packet.cpp */,
+				869136EB17D00E1D00D69406 /* Packet.hpp */,
 				86529BB717CD39B100AA11C1 /* lib_crc */,
-				86529BA717CD394500AA11C1 /* Telemetry.cpp */,
-				86529BA817CD394500AA11C1 /* Telemetry.hpp */,
-				86529B9E17CD37E500AA11C1 /* Command.cpp */,
-				86529B9F17CD37E500AA11C1 /* Command.hpp */,
-				86529BA017CD37E500AA11C1 /* Packet.cpp */,
-				86529BA117CD37E500AA11C1 /* Packet.hpp */,
-				86529BA217CD37E500AA11C1 /* UDPSender.cpp */,
-				86529BA317CD37E500AA11C1 /* UDPSender.hpp */,
 			);
 			name = Externals;
 			sourceTree = "<group>";
@@ -209,7 +210,6 @@
 			children = (
 				86529BB817CD39B100AA11C1 /* lib_crc.c */,
 				86529BB917CD39B100AA11C1 /* lib_crc.h */,
-				86529BBA17CD39B100AA11C1 /* lib_crc.txt */,
 			);
 			path = lib_crc;
 			sourceTree = "<group>";
@@ -288,8 +288,8 @@
 				86529B6E17CD2DD500AA11C1 /* InfoPlist.strings in Resources */,
 				86529B7417CD2DD500AA11C1 /* Credits.rtf in Resources */,
 				86529B7A17CD2DD500AA11C1 /* MainMenu.xib in Resources */,
-				86529BBD17CD39B100AA11C1 /* lib_crc.txt in Resources */,
 				86529BC217CD3A9500AA11C1 /* CommandList.plist in Resources */,
+				867AF73217CD953900AAE11C /* icon.iconset in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,10 +324,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86529BAA17CD395E00AA11C1 /* Telemetry.cpp in Sources */,
-				86529BAC17CD395E00AA11C1 /* Command.cpp in Sources */,
-				86529BAE17CD395E00AA11C1 /* Packet.cpp in Sources */,
-				86529BB017CD395E00AA11C1 /* UDPSender.cpp in Sources */,
+				869136F317D00E7400D69406 /* UDPSender.cpp in Sources */,
+				869136F217D00E6700D69406 /* types.cpp in Sources */,
+				869136F117D00E6100D69406 /* Packet.cpp in Sources */,
+				869136F017D00E5900D69406 /* Command.cpp in Sources */,
 				86529B7017CD2DD500AA11C1 /* main.m in Sources */,
 				86529B7717CD2DD500AA11C1 /* AppDelegate.m in Sources */,
 				86529B9917CD2DE600AA11C1 /* AppController.m in Sources */,
@@ -341,10 +341,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				86529B8E17CD2DD500AA11C1 /* SAS_CommanderTests.m in Sources */,
-				86529BA417CD37E500AA11C1 /* Command.cpp in Sources */,
-				86529BA517CD37E500AA11C1 /* Packet.cpp in Sources */,
-				86529BA617CD37E500AA11C1 /* UDPSender.cpp in Sources */,
-				86529BA917CD394500AA11C1 /* Telemetry.cpp in Sources */,
+				869136E317D00DD600D69406 /* UDPSender.cpp in Sources */,
+				869136E617D00DEE00D69406 /* types.cpp in Sources */,
+				869136EC17D00E1D00D69406 /* Packet.cpp in Sources */,
+				869136EF17D00E4600D69406 /* Command.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,6 +528,7 @@
 				86529B9317CD2DD500AA11C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		86529B9417CD2DD500AA11C1 /* Build configuration list for PBXNativeTarget "SAS-CommanderTests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +537,7 @@
 				86529B9617CD2DD500AA11C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

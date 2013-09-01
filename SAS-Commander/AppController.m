@@ -9,12 +9,20 @@
 #import "AppController.h"
 #import "Commander.h"
 
+#define COUNTDOWNSECONDS 6
+
+#define SAS_CMD_GROUND_PORT 2001 /* The command port on the ground network */
+#define SAS_CMD_FLIGHT_PORT 2000 /* The command port on the flight network */
+
 @interface AppController()
 @property (nonatomic, strong) NSDictionary *plistDict;
 @property (nonatomic, strong) Commander *commander;
-@property (nonatomic, strong) NSString *lastCommand;
 @property (nonatomic, strong) NSDictionary *listOfCommands;
+@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic) int CountDownSeconds;
+@property (nonatomic) int sendToPort;
 - (void)updateCommandKeyBasedonTargetSystem:(NSString *)target_system;
+- (void)updateTimerLabel;
 @end
 
 @implementation AppController
@@ -26,6 +34,10 @@
 @synthesize commander = _commander;
 @synthesize send_Button;
 @synthesize targetListcomboBox;
+@synthesize timer;
+@synthesize timerLabel;
+@synthesize CountDownSeconds;
+@synthesize sendToPort;
 
 - (Commander *)commander
 {
@@ -42,7 +54,7 @@
         // read command list dictionary from the CommandList.plist resource file
         NSString *errorDesc = nil;
         NSPropertyListFormat format;
-        self.lastCommand = @"empty";
+        self.CountDownSeconds = COUNTDOWNSECONDS;
         //self.listOfCommands = [[NSDictionary alloc] init];
         NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"CommandList" ofType:@"plist"];
         NSData *plistXML = [[NSFileManager defaultManager] contentsAtPath:plistPath];
@@ -51,6 +63,7 @@
                                                mutabilityOption:NSPropertyListMutableContainersAndLeaves
                                                format:&format
                                                errorDescription:&errorDesc];
+        self.sendToPort = SAS_CMD_GROUND_PORT;
     }
     return self;
 }
@@ -67,9 +80,9 @@
     [self.targetListcomboBox selectItemAtIndex:0];
     [self.destinationIP_textField setStringValue:@"192.168.0.100"];
     
-    for (int i = 0; i < [self.Variables_Form numberOfRows]; i++) {
-        [[self.Variables_Form cellAtIndex:i] setEnabled:NO];
-    }
+    //for (int i = 0; i < [self.Variables_Form numberOfRows]; i++) {
+    //    [[self.Variables_Form cellAtIndex:i] setEnabled:NO];
+    //}
 }
 
 -(void)controlTextDidChange:(NSNotification *)notification {
@@ -88,44 +101,46 @@
 
 - (IBAction)commandList_action:(NSComboBox *)sender {
     NSString *user_choice = [self.commandListcomboBox stringValue];
-    if ([user_choice isNotEqualTo:@""]) {
+    if ([self.listOfCommands objectForKey:user_choice] !=nil) {
         
-        if ([user_choice isEqualToString:self.lastCommand]) {
-            NSLog(@"you've done this before!");
-            [self updateCommandKeyBasedonTargetSystem:[self.targetListcomboBox stringValue]];
-            
-            
-        } else {
-            
-            NSString *command_key = [[self.listOfCommands valueForKey:user_choice] valueForKey:@"key"];
-            [self.commandKey_textField setStringValue: command_key];
-            
-            NSArray *variable_names = [[self.listOfCommands valueForKey:user_choice] valueForKey:@"var_names"];
-            NSInteger numberOfVariablesNeeded = [variable_names count];
-            [self updateCommandKeyBasedonTargetSystem:[self.targetListcomboBox stringValue]];
-            
-            // clear the form of all elements
-            for (int i = 0; i < [self.Variables_Form numberOfRows]; i++) {
-                [[self.Variables_Form cellAtIndex:i] setEnabled:NO];
-                [[self.Variables_Form cellAtIndex:i] setTitle:[NSString stringWithFormat:@"Field %i", i]];
-                if (i < numberOfVariablesNeeded) {
-                    [[self.Variables_Form cellAtIndex:i] setEnabled:YES];
-                    [[self.Variables_Form cellAtIndex:i] setTitle:[variable_names objectAtIndex:i]];
-                }
+        NSString *command_key = [[self.listOfCommands valueForKey:user_choice] valueForKey:@"key"];
+        [self.commandKey_textField setStringValue: command_key];
+        
+        NSArray *variable_names = [[self.listOfCommands valueForKey:user_choice] valueForKey:@"var_names"];
+        NSInteger numberOfVariablesNeeded = [variable_names count];
+        [self updateCommandKeyBasedonTargetSystem:[self.targetListcomboBox stringValue]];
+        
+        // clear the form of all elements
+        for (int i = 0; i < [self.Variables_Form numberOfRows]; i++) {
+            //[[self.Variables_Form cellAtIndex:i] setEnabled:NO];
+            [[self.Variables_Form cellAtIndex:i] setTitle:[NSString stringWithFormat:@"Field %i", i]];
+            if (i < numberOfVariablesNeeded) {
+                //[[self.Variables_Form cellAtIndex:i] setEnabled:YES];
+                [[self.Variables_Form cellAtIndex:i] setTitle:[variable_names objectAtIndex:i]];
+            } else {
+                [[self.Variables_Form cellAtIndex:i] setTitle:@"NA"];
             }
-            
-            NSString *toolTip = (NSString *)[[self.listOfCommands valueForKey:user_choice] valueForKey:@"description"];
-            [self.commandListcomboBox setToolTip:toolTip];
-            
         }
+        NSString *toolTip = (NSString *)[[self.listOfCommands valueForKey:user_choice] valueForKey:@"description"];
+        [self.commandListcomboBox setToolTip:toolTip];
         [self.confirm_Button setEnabled:YES];
-        self.lastCommand = user_choice;
     }
 }
 
 - (IBAction)ChoseTargetSystem:(NSComboBox *)sender {
     NSString *target_system = [sender stringValue];
     [self updateCommandKeyBasedonTargetSystem:target_system];
+}
+
+- (IBAction)SwitchNetwork:(NSPopUpButton *)sender {
+    if ([sender.selectedItem.title isEqualToString:@"Flight"]) {
+        self.sendToPort = SAS_CMD_FLIGHT_PORT;
+        [self.timerLabel setStringValue:@" "];
+    }
+    if ([sender.selectedItem.title isEqualToString:@"Ground"]) {
+        self.sendToPort = SAS_CMD_GROUND_PORT;
+        [self.timerLabel setStringValue:@"--"];
+    }
 }
 
 - (void)updateCommandKeyBasedonTargetSystem:(NSString *)target_system {
@@ -148,22 +163,22 @@
     [scanner scanHexInt:&command_key];
     
     NSString *user_choice = [self.commandListcomboBox stringValue];
+    
     NSArray *variable_names = [[self.listOfCommands valueForKey:user_choice] valueForKey:@"var_names"];
+    
+    NSArray *variable_types = [[self.listOfCommands valueForKey:user_choice] valueForKey:@"var_types"];
+    
     NSInteger numberOfVariablesNeeded = [variable_names count];
     
-    NSInteger numberOfVariables = [self.Variables_Form numberOfRows];
-    if (numberOfVariables == 0) {
-        command_sequence_number = [self.commander send:(uint16_t)command_key :nil :[self.destinationIP_textField stringValue]];
+    if (numberOfVariablesNeeded == 0) {
+        command_sequence_number = [self.commander send:(uint16_t)command_key :nil :nil :[self.destinationIP_textField stringValue] :self.sendToPort];
     } else {
         NSMutableArray *variables = [[NSMutableArray alloc] init];
         for (NSInteger i = 0; i < numberOfVariablesNeeded; i++) {
-            [variables addObject:[NSNumber numberWithInt:[[self.Variables_Form cellAtIndex:i] intValue]]];
+            [variables addObject:[NSNumber numberWithFloat:[[self.Variables_Form cellAtIndex:i] floatValue]]];
         }
-        command_sequence_number = [self.commander send:(uint16_t)command_key :[variables copy]:[self.destinationIP_textField stringValue]];
+        command_sequence_number = [self.commander send:(uint16_t)command_key :[variables copy] :[variable_types copy] :[self.destinationIP_textField stringValue] :self.sendToPort];
     }
-    
-    //NSString *msg = [NSString stringWithFormat:@"sending (0x%04x, %@) command", (uint16_t)command_key, [self.commandListcomboBox stringValue]];
-    //[[NSNotificationCenter defaultCenter] postNotificationName:@"LogMessage" object:nil userInfo:[NSDictionary dictionaryWithObject:msg forKey:@"message"]];
     
     [self.commandCount_textField setIntegerValue:command_sequence_number];
     [self.send_Button setEnabled:NO];
@@ -172,6 +187,12 @@
     [self.targetListcomboBox setEnabled:YES];
     [self.destinationIP_textField setEnabled:YES];
     [self.commandListcomboBox setTextColor:[NSColor blackColor]];
+    if (self.sendToPort == SAS_CMD_GROUND_PORT) {
+        self.CountDownSeconds = COUNTDOWNSECONDS;
+        self.timerLabel.stringValue = [NSString stringWithFormat:@"%d sec", self.CountDownSeconds];
+        [self.timer invalidate];
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateTimerLabel) userInfo:nil repeats:YES];
+    }
 }
 
 - (IBAction)cancel_Button:(NSButton *)sender {
@@ -181,6 +202,15 @@
     [self.commandListcomboBox setEnabled:YES];
     [self.targetListcomboBox setEnabled:YES];
     [self.destinationIP_textField setEnabled:YES];
+}
+
+- (void)updateTimerLabel{
+    self.CountDownSeconds--;
+    self.timerLabel.stringValue = [NSString stringWithFormat:@"%d sec", self.CountDownSeconds];
+    if (self.CountDownSeconds == -1) {
+        [self.timerLabel setStringValue:@"--"];
+        [self.timer invalidate];
+    }
 }
 
 

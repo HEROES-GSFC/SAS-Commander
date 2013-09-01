@@ -2,19 +2,178 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Get RAS Image</key>
+	<key>Get relative clocking</key>
 	<dict>
+		<key>var_types</key>
+		<array/>
+		<key>var_names</key>
+		<array/>
+		<key>description</key>
+		<string>Request the relative clocking between the screens</string>
+		<key>key</key>
+		<string>0x0C20</string>
+	</dict>
+	<key>Cmd surpress tm packets</key>
+	<dict>
+		<key>var_types</key>
+		<array>
+			<string>uint16</string>
+		</array>
+		<key>var_names</key>
+		<array>
+			<string>number</string>
+		</array>
+		<key>description</key>
+		<string>Supress the next number of tm packets </string>
+		<key>key</key>
+		<string>0x0071</string>
+	</dict>
+	<key>Get aspect int parameter</key>
+	<dict>
+		<key>var_types</key>
+		<array>
+			<string>uint16</string>
+		</array>
+		<key>var_names</key>
+		<array>
+			<string>code</string>
+		</array>
+		<key>description</key>
+		<string>Request a float type aspect parameter</string>
+		<key>key</key>
+		<string>0x0B11</string>
+	</dict>
+	<key>Get aspect float parameter</key>
+	<dict>
+		<key>var_types</key>
+		<array>
+			<string>uint16</string>
+		</array>
+		<key>var_names</key>
+		<array>
+			<string>code</string>
+		</array>
+		<key>description</key>
+		<string>Request an int type aspect parameter</string>
+		<key>key</key>
+		<string>0x0B21</string>
+	</dict>
+	<key>Get camera twist</key>
+	<dict>
+		<key>var_types</key>
+		<array>
+			<string>uint16</string>
+		</array>
+		<key>var_names</key>
+		<array/>
+		<key>description</key>
+		<string>Request the currently set camera twist</string>
+		<key>key</key>
+		<string>0x0B30</string>
+	</dict>
+	<key>Get solar target Y</key>
+	<dict>
+		<key>var_types</key>
+		<array>
+			<string>uint16</string>
+		</array>
+		<key>var_names</key>
+		<array/>
+		<key>description</key>
+		<string>Request the current solar target Y in arcsec</string>
+		<key>key</key>
+		<string>0x0A20</string>
+	</dict>
+	<key>Get solar target X</key>
+	<dict>
+		<key>var_types</key>
+		<array>
+			<string>uint16</string>
+		</array>
+		<key>var_names</key>
+		<array/>
+		<key>description</key>
+		<string>Request the current solar target X in arcsec</string>
+		<key>key</key>
+		<string>0x0A10</string>
+	</dict>
+	<key>Get latitude</key>
+	<dict>
+		<key>var_types</key>
+		<array>
+			<string>float2b</string>
+		</array>
+		<key>var_names</key>
+		<array/>
+		<key>description</key>
+		<string>Request the current latitude</string>
+		<key>key</key>
+		<string>0x0CA0</string>
+	</dict>
+	<key>Get longitude</key>
+	<dict>
+		<key>var_types</key>
+		<array>
+			<string>float2b</string>
+		</array>
+		<key>var_names</key>
+		<array/>
+		<key>description</key>
+		<string>Request the current longitude</string>
+		<key>key</key>
+		<string>0x0CB0</string>
+	</dict>
+	<key>Set camera twist</key>
+	<dict>
+		<key>var_types</key>
+		<array>
+			<string>float2b</string>
+		</array>
+		<key>var_names</key>
+		<array>
+			<string>angle</string>
+		</array>
+		<key>description</key>
+		<string>Set relative clocking angle of screen, positive from zenith when looking at the screen</string>
+		<key>key</key>
+		<string>0x0731</string>
+	</dict>
+	<key>Set relative clocking</key>
+	<dict>
+		<key>var_types</key>
+		<array>
+			<string>float2b</string>
+		</array>
+		<key>var_names</key>
+		<array>
+			<string>angle</string>
+		</array>
+		<key>description</key>
+		<string>Set relative clocking angle of screen, positive from zenith when looking at the screen</string>
+		<key>key</key>
+		<string>0x0621</string>
+	</dict>
+	<key>Cmd request RAS image</key>
+	<dict>
+		<key>var_types</key>
+		<array/>
 		<key>var_names</key>
 		<array/>
 		<key>description</key>
 		<string>Request an image from the RAS</string>
 		<key>key</key>
-		<string>0x0910</string>
+		<string>0x0220</string>
 	</dict>
-	<key>Set Aspect Int Parameter</key>
+	<key>Set aspect int parameter</key>
 	<dict>
+		<key>var_types</key>
+		<array>
+			<string>uint16</string>
+			<string>int16</string>
+		</array>
 		<key>var_names</key>
 		<array>
+			<string>code</string>
 			<string>value</string>
 		</array>
 		<key>description</key>
@@ -22,10 +181,16 @@
 		<key>key</key>
 		<string>0x0712</string>
 	</dict>
-	<key>Set Aspect Float Parameter</key>
+	<key>Set aspect float parameter</key>
 	<dict>
+		<key>var_types</key>
+		<array>
+			<string>uint16</string>
+			<string>float2b</string>
+		</array>
 		<key>var_names</key>
 		<array>
+			<string>code</string>
 			<string>value</string>
 		</array>
 		<key>description</key>
@@ -33,8 +198,10 @@
 		<key>key</key>
 		<string>0x0722</string>
 	</dict>
-	<key>Cmd Send CTL Test Solutions</key>
+	<key>Cmd send CTL test solutions</key>
 	<dict>
+		<key>var_types</key>
+		<array/>
 		<key>var_names</key>
 		<array>
 			<string>value</string>
@@ -44,8 +211,10 @@
 		<key>key</key>
 		<string>0x0081</string>
 	</dict>
-	<key>Cmd Shutdown</key>
+	<key>Cmd shutdown</key>
 	<dict>
+		<key>var_type</key>
+		<string></string>
 		<key>var_names</key>
 		<array/>
 		<key>description</key>
@@ -53,8 +222,10 @@
 		<key>key</key>
 		<string>0x00f0</string>
 	</dict>
-	<key>Get PYAS Exposure</key>
+	<key>Get PYAS exposure</key>
 	<dict>
+		<key>var_types</key>
+		<array/>
 		<key>var_names</key>
 		<array/>
 		<key>description</key>
@@ -62,8 +233,10 @@
 		<key>key</key>
 		<string>0x0850</string>
 	</dict>
-	<key>Get RAS Exposure</key>
+	<key>Get RAS exposure</key>
 	<dict>
+		<key>var_types</key>
+		<array/>
 		<key>var_names</key>
 		<array/>
 		<key>description</key>
@@ -71,8 +244,10 @@
 		<key>key</key>
 		<string>0x0950</string>
 	</dict>
-	<key>Get PYAS Analog Gain</key>
+	<key>Get PYAS analog gain</key>
 	<dict>
+		<key>var_types</key>
+		<array/>
 		<key>var_names</key>
 		<array/>
 		<key>description</key>
@@ -80,8 +255,10 @@
 		<key>key</key>
 		<string>0x0860</string>
 	</dict>
-	<key>Get RAS Analog Gain</key>
+	<key>Get RAS analog gain</key>
 	<dict>
+		<key>var_types</key>
+		<array/>
 		<key>var_names</key>
 		<array/>
 		<key>description</key>
@@ -89,8 +266,10 @@
 		<key>key</key>
 		<string>0x0960</string>
 	</dict>
-	<key>Get PYAS Preamp Gain</key>
+	<key>Get PYAS preamp gain</key>
 	<dict>
+		<key>var_types</key>
+		<array/>
 		<key>var_names</key>
 		<array/>
 		<key>description</key>
@@ -98,8 +277,10 @@
 		<key>key</key>
 		<string>0x0870</string>
 	</dict>
-	<key>Get RAS Preamp Gain</key>
+	<key>Get RAS preamp gain</key>
 	<dict>
+		<key>var_types</key>
+		<array/>
 		<key>var_names</key>
 		<array/>
 		<key>description</key>
@@ -107,17 +288,23 @@
 		<key>key</key>
 		<string>0x0970</string>
 	</dict>
-	<key>Cmd Stop Outputting CTL</key>
+	<key>Cmd stop outputting CTL</key>
 	<dict>
 		<key>var_names</key>
 		<array/>
+		<key>var_types</key>
+		<array>
+			<string>uint16</string>
+		</array>
 		<key>description</key>
 		<string>Start sending CTL solutions</string>
 		<key>key</key>
 		<string>0x0040</string>
 	</dict>
-	<key>Cmd Start Outputting CTL</key>
+	<key>Cmd start outputting CTL</key>
 	<dict>
+		<key>var_types</key>
+		<array/>
 		<key>var_names</key>
 		<array/>
 		<key>description</key>
@@ -125,8 +312,12 @@
 		<key>key</key>
 		<string>0x0030</string>
 	</dict>
-	<key>Get Disk Usage</key>
+	<key>Get disk usage</key>
 	<dict>
+		<key>var_types</key>
+		<array>
+			<string>uint16</string>
+		</array>
 		<key>var_names</key>
 		<array>
 			<string>Disk ID</string>
@@ -136,41 +327,72 @@
 		<key>key</key>
 		<string>0x0881</string>
 	</dict>
-	<key>Cmd Start/Stop Saving Images</key>
+	<key>Set saving images flag</key>
 	<dict>
+		<key>var_types</key>
+		<array>
+			<string>uint16</string>
+		</array>
 		<key>var_names</key>
 		<array>
 			<string>On/Off</string>
 		</array>
 		<key>description</key>
-		<string>Set image saving boolean</string>
+		<string>Set image saving boolean (1 for ON)</string>
 		<key>key</key>
 		<string>0x0421</string>
 	</dict>
-	<key>Set PYAS Preamp gain</key>
+	<key>Set GPS updating flag</key>
 	<dict>
+		<key>var_types</key>
+		<array>
+			<string>uint16</string>
+		</array>
 		<key>var_names</key>
 		<array>
-			<string>value</string>
+			<string>On/Off</string>
+		</array>
+		<key>description</key>
+		<string>Set GPS updating boolean (1 for ON)</string>
+		<key>key</key>
+		<string>0x0431</string>
+	</dict>
+	<key>Set PYAS preamp gain</key>
+	<dict>
+		<key>var_types</key>
+		<array>
+			<string>int16</string>
+		</array>
+		<key>var_names</key>
+		<array>
+			<string>gain</string>
 		</array>
 		<key>description</key>
 		<string>Set the preamp gain value</string>
 		<key>key</key>
 		<string>0x0491</string>
 	</dict>
-	<key>Set RAS Preamp gain</key>
+	<key>Set RAS preamp gain</key>
 	<dict>
+		<key>var_types</key>
+		<array>
+			<string>int16</string>
+		</array>
 		<key>var_names</key>
 		<array>
-			<string>value</string>
+			<string>gain</string>
 		</array>
 		<key>description</key>
 		<string>Set the RAS preamp gain value</string>
 		<key>key</key>
 		<string>0x0591</string>
 	</dict>
-	<key>Cmd Relay ON</key>
+	<key>Cmd relay on</key>
 	<dict>
+		<key>var_types</key>
+		<array>
+			<string>uint16</string>
+		</array>
 		<key>var_names</key>
 		<array>
 			<string>relay number</string>
@@ -180,8 +402,12 @@
 		<key>key</key>
 		<string>0x0101</string>
 	</dict>
-	<key>Cmd Relay OFF</key>
+	<key>Cmd relay off</key>
 	<dict>
+		<key>var_types</key>
+		<array>
+			<string>uint16</string>
+		</array>
 		<key>var_names</key>
 		<array>
 			<string>relay number</string>
@@ -191,8 +417,12 @@
 		<key>key</key>
 		<string>0x0111</string>
 	</dict>
-	<key>Cmd all relays ON</key>
+	<key>Cmd all relays on</key>
 	<dict>
+		<key>var_types</key>
+		<array>
+			<string>uint16</string>
+		</array>
 		<key>var_names</key>
 		<array/>
 		<key>description</key>
@@ -200,28 +430,40 @@
 		<key>key</key>
 		<string>0x0120</string>
 	</dict>
-	<key>Cmd all relays OFF</key>
+	<key>Cmd all relays off</key>
 	<dict>
 		<key>var_names</key>
 		<array/>
+		<key>var_types</key>
+		<array>
+			<string>uint16</string>
+		</array>
 		<key>description</key>
 		<string>Turn all relays OFF (unpowered)</string>
 		<key>key</key>
 		<string>0x0130</string>
 	</dict>
-	<key>Set PYAS Analog gain</key>
+	<key>Set PYAS analog gain</key>
 	<dict>
 		<key>var_names</key>
 		<array>
-			<string>value</string>
+			<string>gain</string>
+		</array>
+		<key>var_types</key>
+		<array>
+			<string>uint16</string>
 		</array>
 		<key>description</key>
 		<string>Set the analog gain value  (log scale, ~160 doubles the gain)</string>
 		<key>key</key>
 		<string>0x0481</string>
 	</dict>
-	<key>Set RAS Analog gain</key>
+	<key>Set RAS analog gain</key>
 	<dict>
+		<key>var_types</key>
+		<array>
+			<string>uint16</string>
+		</array>
 		<key>var_names</key>
 		<array>
 			<string>value</string>
@@ -231,8 +473,12 @@
 		<key>key</key>
 		<string>0x0581</string>
 	</dict>
-	<key>Set PYAS exposure time</key>
+	<key>Set PYAS exposure</key>
 	<dict>
+		<key>var_types</key>
+		<array>
+			<string>uint16</string>
+		</array>
 		<key>var_names</key>
 		<array>
 			<string>time (us)</string>
@@ -242,8 +488,12 @@
 		<key>key</key>
 		<string>0x0451</string>
 	</dict>
-	<key>Set RAS exposure time</key>
+	<key>Set RAS exposure</key>
 	<dict>
+		<key>var_types</key>
+		<array>
+			<string>uint16</string>
+		</array>
 		<key>var_names</key>
 		<array>
 			<string>time (us)</string>
@@ -253,8 +503,13 @@
 		<key>key</key>
 		<string>0x0551</string>
 	</dict>
-	<key>Set new pointing</key>
+	<key>Set solar target</key>
 	<dict>
+		<key>var_types</key>
+		<array>
+			<string>int16</string>
+			<string>int16</string>
+		</array>
 		<key>key</key>
 		<string>0x0412</string>
 		<key>description</key>
@@ -265,17 +520,38 @@
 			<string>y</string>
 		</array>
 	</dict>
-	<key>Get PYAS RAW Image</key>
+	<key>Set latitude/longitude</key>
 	<dict>
+		<key>var_types</key>
+		<array>
+			<string>float2b</string>
+			<string>float2b</string>
+		</array>
+		<key>key</key>
+		<string>0x06A2</string>
+		<key>description</key>
+		<string>Set new latitude/longitude (degrees)</string>
+		<key>var_names</key>
+		<array>
+			<string>x</string>
+			<string>y</string>
+		</array>
+	</dict>
+	<key>Cmd request PYAS image</key>
+	<dict>
+		<key>var_types</key>
+		<array/>
 		<key>var_names</key>
 		<array/>
 		<key>description</key>
 		<string>Ask for a full frame to be sent over TCP</string>
 		<key>key</key>
-		<string>0x0810</string>
+		<string>0x0210</string>
 	</dict>
-	<key>Cmd Restart all Workers</key>
+	<key>Cmd restart all threads</key>
 	<dict>
+		<key>var_types</key>
+		<array/>
 		<key>var_names</key>
 		<array/>
 		<key>description</key>
@@ -285,6 +561,8 @@
 	</dict>
 	<key>Test</key>
 	<dict>
+		<key>var_types</key>
+		<array/>
 		<key>var_names</key>
 		<array/>
 		<key>key</key>
@@ -292,8 +570,10 @@
 		<key>description</key>
 		<string>send a test command (does nothing)</string>
 	</dict>
-	<key>Cmd Kill all Workers</key>
+	<key>Cmd kill all threads</key>
 	<dict>
+		<key>var_types</key>
+		<array/>
 		<key>var_names</key>
 		<array/>
 		<key>description</key>
