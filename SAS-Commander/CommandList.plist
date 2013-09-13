@@ -255,6 +255,17 @@
 		<key>key</key>
 		<string>0x0850</string>
 	</dict>
+	<key>Get NTP offset</key>
+	<dict>
+		<key>var_types</key>
+		<array/>
+		<key>var_names</key>
+		<array/>
+		<key>description</key>
+		<string>Request the current NTP offset in microseconds</string>
+		<key>key</key>
+		<string>0x0D10</string>
+	</dict>
 	<key>Get RAS exposure</key>
 	<dict>
 		<key>var_types</key>
@@ -360,7 +371,7 @@
 			<string>On/Off</string>
 		</array>
 		<key>description</key>
-		<string>Set image saving boolean (1 for ON)</string>
+		<string>Set image saving boolean, for both PYAS and RAS (1 for ON)</string>
 		<key>key</key>
 		<string>0x0421</string>
 	</dict>
@@ -378,6 +389,36 @@
 		<string>Set GPS updating boolean (1 for ON)</string>
 		<key>key</key>
 		<string>0x0431</string>
+	</dict>
+	<key>Set PYAS saving flag</key>
+	<dict>
+		<key>var_types</key>
+		<array>
+			<string>uint16</string>
+		</array>
+		<key>var_names</key>
+		<array>
+			<string>On/Off</string>
+		</array>
+		<key>description</key>
+		<string>Set PYAS image saving boolean (1 for ON)</string>
+		<key>key</key>
+		<string>0x0441</string>
+	</dict>
+	<key>Set RAS saving flag</key>
+	<dict>
+		<key>var_types</key>
+		<array>
+			<string>uint16</string>
+		</array>
+		<key>var_names</key>
+		<array>
+			<string>On/Off</string>
+		</array>
+		<key>description</key>
+		<string>Set RAS image saving boolean (1 for ON)</string>
+		<key>key</key>
+		<string>0x0541</string>
 	</dict>
 	<key>Set PYAS preamp gain</key>
 	<dict>
