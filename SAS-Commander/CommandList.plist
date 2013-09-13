@@ -2,6 +2,28 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Cmd restart exe</key>
+	<dict>
+		<key>var_types</key>
+		<array/>
+		<key>var_names</key>
+		<array/>
+		<key>description</key>
+		<string>Make exe quit, systemd will restart it automatically</string>
+		<key>key</key>
+		<string>0x0050</string>
+	</dict>
+	<key>Cmd relays to default</key>
+	<dict>
+		<key>var_types</key>
+		<array/>
+		<key>var_names</key>
+		<array/>
+		<key>description</key>
+		<string>Return all relays to default configuration</string>
+		<key>key</key>
+		<string>0x0140</string>
+	</dict>
 	<key>Get relative clocking</key>
 	<dict>
 		<key>var_types</key>
@@ -572,8 +594,6 @@
 	</dict>
 	<key>Cmd kill all threads</key>
 	<dict>
-		<key>var_types</key>
-		<array/>
 		<key>var_names</key>
 		<array/>
 		<key>description</key>

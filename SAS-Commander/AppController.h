@@ -16,15 +16,15 @@
 @property (weak) IBOutlet NSTextField *commandCount_textField;
 @property (weak) IBOutlet NSTextField *destinationIP_textField;
 @property (weak) IBOutlet NSButton *send_Button;
-@property (weak) IBOutlet NSComboBox *targetListcomboBox;
 @property (weak) IBOutlet NSButton *confirm_Button;
 @property (weak) IBOutlet NSTextField *timerLabel;
+@property (weak) IBOutlet NSSegmentedControl *targetList;
 
 - (IBAction)commandList_action:(NSComboBox *)sender;
 - (IBAction)send_Button:(NSButton *)sender;
 - (IBAction)cancel_Button:(NSButton *)sender;
 - (IBAction)ConfirmButtonPushed:(NSButton *)sender;
-- (IBAction)ChoseTargetSystem:(NSComboBox *)sender;
+- (IBAction)ChoseTargetSystem:(NSSegmentedControl *)sender;
 - (IBAction)SwitchNetwork:(NSPopUpButton *)sender;
 
 @end

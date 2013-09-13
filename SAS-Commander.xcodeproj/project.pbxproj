@@ -22,6 +22,8 @@
 		86529BBC17CD39B100AA11C1 /* lib_crc.c in Sources */ = {isa = PBXBuildFile; fileRef = 86529BB817CD39B100AA11C1 /* lib_crc.c */; };
 		86529BC217CD3A9500AA11C1 /* CommandList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 86529BC117CD3A9500AA11C1 /* CommandList.plist */; };
 		867AF73217CD953900AAE11C /* icon.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 867AF73117CD953900AAE11C /* icon.iconset */; };
+		86828C9217DA6A2D003E3E78 /* ConsoleWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86828C9017DA6A2D003E3E78 /* ConsoleWindowController.m */; };
+		86828C9317DA6A2D003E3E78 /* ConsoleWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86828C9117DA6A2D003E3E78 /* ConsoleWindowController.xib */; };
 		869136E317D00DD600D69406 /* UDPSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 869136E117D00DD600D69406 /* UDPSender.cpp */; };
 		869136E617D00DEE00D69406 /* types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 869136E417D00DEE00D69406 /* types.cpp */; };
 		869136EC17D00E1D00D69406 /* Packet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 869136EA17D00E1D00D69406 /* Packet.cpp */; };
@@ -70,6 +72,9 @@
 		86529BB917CD39B100AA11C1 /* lib_crc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lib_crc.h; sourceTree = "<group>"; };
 		86529BC117CD3A9500AA11C1 /* CommandList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CommandList.plist; sourceTree = "<group>"; };
 		867AF73117CD953900AAE11C /* icon.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = icon.iconset; sourceTree = "<group>"; };
+		86828C8F17DA6A2D003E3E78 /* ConsoleWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsoleWindowController.h; sourceTree = "<group>"; };
+		86828C9017DA6A2D003E3E78 /* ConsoleWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsoleWindowController.m; sourceTree = "<group>"; };
+		86828C9117DA6A2D003E3E78 /* ConsoleWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConsoleWindowController.xib; sourceTree = "<group>"; };
 		869136E117D00DD600D69406 /* UDPSender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UDPSender.cpp; path = SAS/aspect/UDPSender.cpp; sourceTree = SOURCE_ROOT; };
 		869136E417D00DEE00D69406 /* types.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = types.cpp; path = SAS/aspect/types.cpp; sourceTree = SOURCE_ROOT; };
 		869136E517D00DEE00D69406 /* types.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = types.hpp; path = SAS/aspect/types.hpp; sourceTree = SOURCE_ROOT; };
@@ -147,6 +152,9 @@
 				86529B7517CD2DD500AA11C1 /* AppDelegate.h */,
 				86529B9717CD2DE600AA11C1 /* AppController.h */,
 				86529B9817CD2DE600AA11C1 /* AppController.m */,
+				86828C8F17DA6A2D003E3E78 /* ConsoleWindowController.h */,
+				86828C9017DA6A2D003E3E78 /* ConsoleWindowController.m */,
+				86828C9117DA6A2D003E3E78 /* ConsoleWindowController.xib */,
 				86529B9A17CD370500AA11C1 /* Commander.h */,
 				86529B9B17CD370500AA11C1 /* Commander.m */,
 				86529B7617CD2DD500AA11C1 /* AppDelegate.m */,
@@ -290,6 +298,7 @@
 				86529B7A17CD2DD500AA11C1 /* MainMenu.xib in Resources */,
 				86529BC217CD3A9500AA11C1 /* CommandList.plist in Resources */,
 				867AF73217CD953900AAE11C /* icon.iconset in Resources */,
+				86828C9317DA6A2D003E3E78 /* ConsoleWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +342,7 @@
 				86529B9917CD2DE600AA11C1 /* AppController.m in Sources */,
 				86529B9C17CD370500AA11C1 /* Commander.m in Sources */,
 				86529BBC17CD39B100AA11C1 /* lib_crc.c in Sources */,
+				86828C9217DA6A2D003E3E78 /* ConsoleWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +472,7 @@
 				GCC_PREFIX_HEADER = "SAS-Commander/SAS-Commander-Prefix.pch";
 				INFOPLIST_FILE = "SAS-Commander/SAS-Commander-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -471,10 +482,12 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
+				GCC_OPTIMIZATION_LEVEL = 1;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SAS-Commander/SAS-Commander-Prefix.pch";
 				INFOPLIST_FILE = "SAS-Commander/SAS-Commander-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

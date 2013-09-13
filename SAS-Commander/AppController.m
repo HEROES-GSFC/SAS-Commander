@@ -7,6 +7,7 @@
 //
 
 #import "AppController.h"
+#import "ConsoleWindowController.h"
 #import "Commander.h"
 
 #define COUNTDOWNSECONDS 6
@@ -21,8 +22,10 @@
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic) int CountDownSeconds;
 @property (nonatomic) int sendToPort;
+@property (nonatomic, strong) ConsoleWindowController *ConsoleWindow;
 - (void)updateCommandKeyBasedonTargetSystem:(NSString *)target_system;
 - (void)updateTimerLabel;
+- (void)postToLogWindow: (NSString *)message;
 @end
 
 @implementation AppController
@@ -33,11 +36,12 @@
 @synthesize destinationIP_textField;
 @synthesize commander = _commander;
 @synthesize send_Button;
-@synthesize targetListcomboBox;
 @synthesize timer;
 @synthesize timerLabel;
 @synthesize CountDownSeconds;
 @synthesize sendToPort;
+@synthesize ConsoleWindow = _ConsoleWindow;
+@synthesize targetList;
 
 - (Commander *)commander
 {
@@ -45,6 +49,13 @@
         _commander = [[Commander alloc] init];
     }
     return _commander;
+}
+
+- (ConsoleWindowController *)ConsoleWindow{
+    if (_ConsoleWindow == nil) {
+        _ConsoleWindow = [[ConsoleWindowController alloc] init];
+    }
+    return _ConsoleWindow;
 }
 
 - (id)init
@@ -64,6 +75,9 @@
                                                format:&format
                                                errorDescription:&errorDesc];
         self.sendToPort = SAS_CMD_GROUND_PORT;
+        [self.ConsoleWindow showWindow:nil];
+        [self.ConsoleWindow.window orderFront:self];
+        [NSApp activateIgnoringOtherApps:YES];
     }
     return self;
 }
@@ -77,7 +91,6 @@
     
     [self.send_Button setEnabled:NO];
     [self.confirm_Button setEnabled:YES];
-    [self.targetListcomboBox selectItemAtIndex:0];
     [self.destinationIP_textField setStringValue:@"192.168.0.100"];
     
     //for (int i = 0; i < [self.Variables_Form numberOfRows]; i++) {
@@ -96,7 +109,7 @@
     [self.confirm_Button setEnabled:NO];
     [self.commandListcomboBox setEnabled:NO];
     [self.commandListcomboBox setTextColor:[NSColor redColor]];
-    [self.targetListcomboBox setEnabled:NO];
+    [self.targetList setEnabled:NO];
 }
 
 - (IBAction)commandList_action:(NSComboBox *)sender {
@@ -108,7 +121,7 @@
         
         NSArray *variable_names = [[self.listOfCommands valueForKey:user_choice] valueForKey:@"var_names"];
         NSInteger numberOfVariablesNeeded = [variable_names count];
-        [self updateCommandKeyBasedonTargetSystem:[self.targetListcomboBox stringValue]];
+        [self updateCommandKeyBasedonTargetSystem:[self.targetList labelForSegment:[self.targetList selectedSegment]]];
         
         // clear the form of all elements
         for (int i = 0; i < [self.Variables_Form numberOfRows]; i++) {
@@ -127,9 +140,8 @@
     }
 }
 
-- (IBAction)ChoseTargetSystem:(NSComboBox *)sender {
-    NSString *target_system = [sender stringValue];
-    [self updateCommandKeyBasedonTargetSystem:target_system];
+- (IBAction)ChoseTargetSystem:(NSSegmentedControl *)sender {
+    [self updateCommandKeyBasedonTargetSystem:[sender labelForSegment:[sender selectedSegment]]];
 }
 
 - (IBAction)SwitchNetwork:(NSPopUpButton *)sender {
@@ -164,8 +176,10 @@
     
     NSString *user_choice = [self.commandListcomboBox stringValue];
     
-    NSArray *variable_names = [[self.listOfCommands valueForKey:user_choice] valueForKey:@"var_names"];
+    NSString *temp = [NSString stringWithFormat:@"Sending '%@' (%@) to %@", user_choice, [self.commandKey_textField stringValue], [self.targetList labelForSegment:[self.targetList selectedSegment]]];
+    NSMutableString *logMessage = [NSMutableString stringWithString:temp];
     
+    NSArray *variable_names = [[self.listOfCommands valueForKey:user_choice] valueForKey:@"var_names"];
     NSArray *variable_types = [[self.listOfCommands valueForKey:user_choice] valueForKey:@"var_types"];
     
     NSInteger numberOfVariablesNeeded = [variable_names count];
@@ -174,8 +188,11 @@
         command_sequence_number = [self.commander send:(uint16_t)command_key :nil :nil :[self.destinationIP_textField stringValue] :self.sendToPort];
     } else {
         NSMutableArray *variables = [[NSMutableArray alloc] init];
+        [logMessage appendString:@" with value(s) "];
         for (NSInteger i = 0; i < numberOfVariablesNeeded; i++) {
-            [variables addObject:[NSNumber numberWithFloat:[[self.Variables_Form cellAtIndex:i] floatValue]]];
+            NSNumber *variable = [NSNumber numberWithFloat:[[self.Variables_Form cellAtIndex:i] floatValue]];
+            [variables addObject:variable];
+            [logMessage appendFormat:@" %@=%@", [variable_names objectAtIndex:i], variable];
         }
         command_sequence_number = [self.commander send:(uint16_t)command_key :[variables copy] :[variable_types copy] :[self.destinationIP_textField stringValue] :self.sendToPort];
     }
@@ -184,9 +201,10 @@
     [self.send_Button setEnabled:NO];
     [self.confirm_Button setEnabled:NO];
     [self.commandListcomboBox setEnabled:YES];
-    [self.targetListcomboBox setEnabled:YES];
+    [self.targetList setEnabled:YES];
     [self.destinationIP_textField setEnabled:YES];
     [self.commandListcomboBox setTextColor:[NSColor blackColor]];
+    [self postToLogWindow:logMessage];
     if (self.sendToPort == SAS_CMD_GROUND_PORT) {
         self.CountDownSeconds = COUNTDOWNSECONDS;
         self.timerLabel.stringValue = [NSString stringWithFormat:@"%d sec", self.CountDownSeconds];
@@ -200,7 +218,7 @@
     [self.confirm_Button setEnabled:NO];
     [self.Variables_Form setEnabled:YES];
     [self.commandListcomboBox setEnabled:YES];
-    [self.targetListcomboBox setEnabled:YES];
+    [self.targetList setEnabled:YES];
     [self.destinationIP_textField setEnabled:YES];
 }
 
@@ -213,5 +231,8 @@
     }
 }
 
+- (void)postToLogWindow: (NSString *)message{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"LogMessage" object:nil userInfo:[NSDictionary dictionaryWithObject:message forKey:@"message"]];
+}
 
 @end
