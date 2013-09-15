@@ -14,6 +14,7 @@
 @property (unsafe_unretained) IBOutlet NSTextView *ConsoleTextView;
 - (IBAction)clear_button:(NSButton *)sender;
 - (IBAction)copy_button:(NSButton*)sender;
+- (IBAction)savetofile_button:(NSButton *)sender;
 
 - (void) log:(NSString*) msg;
 
