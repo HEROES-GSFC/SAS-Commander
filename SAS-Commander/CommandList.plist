@@ -35,7 +35,7 @@
 		<key>key</key>
 		<string>0x0C20</string>
 	</dict>
-	<key>Cmd surpress tm packets</key>
+	<key>Cmd suppress tm packets</key>
 	<dict>
 		<key>var_types</key>
 		<array>
@@ -505,6 +505,94 @@
 		<string>Turn all relays OFF (unpowered)</string>
 		<key>key</key>
 		<string>0x0130</string>
+	</dict>
+	<key>Cmd PYAS tstat bypass</key>
+	<dict>
+		<key>var_names</key>
+		<array/>
+		<key>var_types</key>
+		<array/>
+		<key>description</key>
+		<string>Bypass PYAS thermostat</string>
+		<key>key</key>
+		<string>0x0160</string>
+	</dict>
+	<key>Cmd PYAS tstat enable</key>
+	<dict>
+		<key>var_names</key>
+		<array/>
+		<key>var_types</key>
+		<array/>
+		<key>description</key>
+		<string>Enable PYAS thermostat</string>
+		<key>key</key>
+		<string>0x0170</string>
+	</dict>
+	<key>Cmd RAS tstat bypass</key>
+	<dict>
+		<key>var_names</key>
+		<array/>
+		<key>var_types</key>
+		<array/>
+		<key>description</key>
+		<string>Bypass RAS thermostat</string>
+		<key>key</key>
+		<string>0x0180</string>
+	</dict>
+	<key>Cmd RAS tstat enable</key>
+	<dict>
+		<key>var_names</key>
+		<array/>
+		<key>var_types</key>
+		<array/>
+		<key>description</key>
+		<string>Enable RAS thermostat</string>
+		<key>key</key>
+		<string>0x0190</string>
+	</dict>
+	<key>Cmd can heaters off</key>
+	<dict>
+		<key>var_names</key>
+		<array/>
+		<key>var_types</key>
+		<array/>
+		<key>description</key>
+		<string>Turn can heaters off</string>
+		<key>key</key>
+		<string>0x01A0</string>
+	</dict>
+	<key>Cmd can heaters low</key>
+	<dict>
+		<key>var_names</key>
+		<array/>
+		<key>var_types</key>
+		<array/>
+		<key>description</key>
+		<string>Turn can heaters to low (just small heater)</string>
+		<key>key</key>
+		<string>0x01B0</string>
+	</dict>
+	<key>Cmd can heaters medium</key>
+	<dict>
+		<key>var_names</key>
+		<array/>
+		<key>var_types</key>
+		<array/>
+		<key>description</key>
+		<string>Turn can heaters to medium (just big heater)</string>
+		<key>key</key>
+		<string>0x01C0</string>
+	</dict>
+	<key>Cmd can heaters high</key>
+	<dict>
+		<key>var_names</key>
+		<array/>
+		<key>var_types</key>
+		<array/>
+		<key>description</key>
+		<string>Turn can heaters to high (both heaters)</string>
+		<key>key</key>
+		<string>0x01D0</string>
 	</dict>
 	<key>Set PYAS analog gain</key>
 	<dict>
