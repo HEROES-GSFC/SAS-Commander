@@ -2,9 +2,9 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1080</int>
-		<string key="IBDocument.SystemVersion">12E55</string>
+		<string key="IBDocument.SystemVersion">12D78</string>
 		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
-		<string key="IBDocument.AppKitVersion">1187.39</string>
+		<string key="IBDocument.AppKitVersion">1187.37</string>
 		<string key="IBDocument.HIToolboxVersion">626.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -62,9 +62,9 @@
 										<object class="NSTextView" id="393771890">
 											<reference key="NSNextResponder" ref="490101590"/>
 											<int key="NSvFlags">2322</int>
-											<string key="NSFrameSize">{873, 233}</string>
+											<string key="NSFrameSize">{843, 233}</string>
 											<reference key="NSSuperview" ref="490101590"/>
-											<reference key="NSNextKeyView" ref="326687261"/>
+											<reference key="NSNextKeyView" ref="1061460877"/>
 											<string key="NSReuseIdentifierKey">_NS:13</string>
 											<object class="NSTextContainer" key="NSTextContainer" id="14960004">
 												<object class="NSLayoutManager" key="NSLayoutManager">
@@ -81,7 +81,7 @@
 													<nil key="NSDelegate"/>
 												</object>
 												<reference key="NSTextView" ref="393771890"/>
-												<double key="NSWidth">873</double>
+												<double key="NSWidth">843</double>
 												<int key="NSTCFlags">1</int>
 											</object>
 											<object class="NSTextViewSharedData" key="NSSharedData">
@@ -130,11 +130,10 @@
 											</object>
 											<int key="NSTVFlags">6</int>
 											<string key="NSMaxSize">{873, 10000000}</string>
-											<string key="NSMinize">{858, 233}</string>
 											<nil key="NSDelegate"/>
 										</object>
 									</array>
-									<string key="NSFrame">{{1, 1}, {858, 233}}</string>
+									<string key="NSFrame">{{1, 1}, {843, 233}}</string>
 									<reference key="NSSuperview" ref="1061650757"/>
 									<reference key="NSNextKeyView" ref="393771890"/>
 									<string key="NSReuseIdentifierKey">_NS:11</string>
@@ -164,9 +163,8 @@
 								<object class="NSScroller" id="326687261">
 									<reference key="NSNextResponder" ref="1061650757"/>
 									<int key="NSvFlags">256</int>
-									<string key="NSFrame">{{843, 1}, {16, 233}}</string>
+									<string key="NSFrame">{{844, 1}, {15, 233}}</string>
 									<reference key="NSSuperview" ref="1061650757"/>
-									<reference key="NSNextKeyView"/>
 									<string key="NSReuseIdentifierKey">_NS:83</string>
 									<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 									<reference key="NSTarget" ref="1061650757"/>
@@ -181,7 +179,6 @@
 									<reference key="NSSuperview" ref="1061650757"/>
 									<reference key="NSNextKeyView" ref="490101590"/>
 									<string key="NSReuseIdentifierKey">_NS:33</string>
-									<bool key="NSEnabled">YES</bool>
 									<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 									<int key="NSsFlags">1</int>
 									<reference key="NSTarget" ref="1061650757"/>
@@ -192,9 +189,9 @@
 							</array>
 							<string key="NSFrame">{{-1, -1}, {860, 235}}</string>
 							<reference key="NSSuperview" ref="1006"/>
-							<reference key="NSNextKeyView" ref="1061460877"/>
+							<reference key="NSNextKeyView" ref="490101590"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
-							<int key="NSsFlags">133266</int>
+							<int key="NSsFlags">133138</int>
 							<reference key="NSVScroller" ref="326687261"/>
 							<reference key="NSHScroller" ref="1061460877"/>
 							<reference key="NSContentView" ref="490101590"/>
@@ -290,7 +287,7 @@
 					<reference key="NSSuperview"/>
 					<reference key="NSNextKeyView" ref="614238732"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1280, 778}}</string>
+				<string key="NSScreenRect">{{0, 0}, {2560, 1418}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
